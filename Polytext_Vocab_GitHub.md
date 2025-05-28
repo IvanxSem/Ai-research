@@ -299,3 +299,44 @@ A comprehensive list of Polytext core and shell terms for building and translati
 | DR               | disaster recovery                   | Operations            |
 | auto_scaling     | dynamic scaling                     | Operations          |
 | credential_inject| inject required components          | Architecture       |
+
+Here’s a tiny Polytext “program” that computes the factorial of a number and prints the results for 1…5. It uses our core Polytext terms in sequence to form a readable, self-documenting script:
+
+polytext
+Copy
+Edit
+// Define a recursive factorial function
+fn factorial param n ->
+  // Base case: if n <= 1 return 1
+  if n <= 1 return 1
+
+  // Recursive case: return n * factorial(n - 1)
+  return n * factorial(n - 1)
+
+// Main routine
+fn main ->
+  // Create a list of numbers 1 through 5
+  var nums = [1, 2, 3, 4, 5]
+
+  // For each number in nums, compute and log the factorial
+  for num in nums ->
+    var result = factorial(num)
+    log("factorial of " + num + " is " + result)
+
+// Run the program
+main()
+Explanation of Polytext terms used:
+
+fn / param / return → function definition, parameters, and return value
+
+if → conditional branch
+
+* / - / <= → arithmetic and comparison
+
+var → mutable variable declaration
+
+[ ] → list constructor
+
+for … in … → loop over a sequence
+
+log → output to console
